@@ -1,2 +1,2 @@
 # coffeemaker
-Vagrant Box with all tools setup needed to work on C&amp;&amp;C projects
+Vagrant Box with all tools needed to work on C&amp;&amp;C projects
