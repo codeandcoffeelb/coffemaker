@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 #Welcome the user
-echo ""
-echo ""
+echo "\n"
+echo "\n"
 echo "Welcome to the Code And Coffee Long Beach vagrant!"
 echo "We are now provisioning the vagrant box..."
-echo ""
-echo ""
+echo "\n"
+echo "\n"
 
 #Remove Non-interactive .bashrc lines
 echo "Modifying .bashrc to allow edits"
@@ -45,6 +45,20 @@ sudo chmod -R 755 /vagrant/html
 #Restart apache for the permissions change
 sudo service apache2 restart
 
+#Install NVM (Node Version Manager)
+curl https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | sh
+source /home/vagrant/.bashrc
+
+#Install Node (Latest LTS on 4/23/16)
+nvm install 4.4.3
+nvm use 4.4.3
+node -v
+nvm alias default 4.4.3
+
+#Install npm without sudo
+curl https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-nosudo.sh | sh < /vagrant/npmNoSudoInput.txt
+source /home/vagrant/.bashrc
+
 #Install RbEnv
 cd
 git clone git://github.com/sstephenson/rbenv.git .rbenv
@@ -82,9 +96,23 @@ rbenv rehash
 gem install bundle
 rbenv rehash
 
+#Update npm, Install grunt and bower with npm
+npm install -g npm
+npm install --global bower grunt-cli
+bower --version
+grunt --version
+
 #Add our awesome ubuntu banner
 sudo cp /vagrant/sshd_config /etc/ssh/sshd_config
 sudo cp /vagrant/issue.net /etc/issue.net
 sudo cp /vagrant/issue.net /etc/motd
 
 #Finished!
+
+#Salutations to the user
+echo "\n"
+echo "\n"
+echo "Thank you for using the Code And Coffee Long Beach Vagrant!"
+echo "Have a nice day!"
+echo "\n"
+echo "\n"
