@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+#Welcome the user
+echo ""
+echo ""
+echo "Welcome to the Code And Coffee Long Beach vagrant!"
+echo "We are now provisioning the vagrant box..."
+echo ""
+echo ""
+
 #Remove Non-interactive .bashrc lines
 echo "Modifying .bashrc to allow edits"
 sed '5,10d;' /home/vagrant/.bashrc > /home/vagrant/.bashrcNew
@@ -9,24 +17,7 @@ mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
 sudo apt-get update
 
 #Download things for Npm and Ruby(Compass and things)
-sudo apt-get install -y git build-essential libssl-dev git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev vim apache2
-
-# Set Up our apache
-sh /vagrant/BaseVagrant/apacheVagrant.sh
-
-#Install NVM (Node Version Manager)
-curl https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | sh
-source /home/vagrant/.bashrc
-
-#Install Node (Latest LTS on 4/23/16)
-nvm install 4.4.3
-nvm use 4.4.3
-node -v
-nvm alias default 4.4.3
-
-#Install npm without sudo
-curl https://raw.githubusercontent.com/glenpike/npm-g_nosudo/master/npm-g-nosudo.sh | sh < /vagrant/BaseVagrant/npmNoSudoInput.txt
-source /home/vagrant/.bashrc
+sudo apt-get install -y git build-essential libssl-dev git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev vim
 
 #Install RBEnv
 cd
@@ -60,14 +51,6 @@ rbenv rehash
 #Install Jekyll
 gem install jekyll
 rbenv rehash
-
-#Install stuff with npm
-npm install -g npm
-npm install --global yo --unsafe-perm
-npm install --global bower grunt-cli ionic express
-yo --version
-bower --version
-grunt --version
 
 #Add our awesome ubuntu banner
 sudo cp /vagrant/sshd_config /etc/ssh/sshd_config
