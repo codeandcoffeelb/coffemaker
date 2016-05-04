@@ -6,6 +6,9 @@ Vagrant.configure(2) do |config|
   # Name the Vagrant instance
   config.vm.define "CodeAndCoffeeVagrant"
 
+  # Forward our ports
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
   # Run bootstrap script
   config.vm.provision :shell, path: "bootstrap.sh", privileged: false
 end
