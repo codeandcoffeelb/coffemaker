@@ -78,7 +78,7 @@ rbenv rehash
 gem install jekyll
 rbenv rehash
 
-#Install Bundlrer
+#Install Bundler
 gem install bundle
 rbenv rehash
 

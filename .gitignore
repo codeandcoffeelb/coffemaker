@@ -1,1 +1,8 @@
+# Ignore the .vagrant folder
 .vagrant
+
+#Ignore all cloned repos/folders
+*/
+
+#Dont ignore the html folder/readme
+!/html/README
