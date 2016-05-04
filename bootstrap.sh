@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
 #Welcome the user
-echo "\n"
-echo "\n"
 echo "Welcome to the Code And Coffee Long Beach vagrant!"
 echo "We are now provisioning the vagrant box..."
-echo "\n"
-echo "\n"
 
 #Remove Non-interactive .bashrc lines
 echo "Modifying .bashrc to allow edits"
@@ -110,9 +106,5 @@ sudo cp /vagrant/issue.net /etc/motd
 #Finished!
 
 #Salutations to the user
-echo "\n"
-echo "\n"
 echo "Thank you for using the Code And Coffee Long Beach Vagrant!"
 echo "Have a nice day!"
-echo "\n"
-echo "\n"
