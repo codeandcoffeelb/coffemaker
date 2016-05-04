@@ -17,9 +17,35 @@ mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
 sudo apt-get update
 
 #Download things for Npm and Ruby(Compass and things)
-sudo apt-get install -y git build-essential libssl-dev git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev vim
+sudo apt-get install -y git build-essential libssl-dev git-core curl zlib1g-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev vim apache2
 
-#Install RBEnv
+#Install apache2
+
+# Replace apache dir.conf, enable apache php
+sudo cp /vagrant/dir.conf /etc/apache2/mods-enabled/dir.conf
+
+#Restart apache
+sudo service apache2 restart
+
+#Set our document root so we can access it
+sudo cp /vagrant/000-default.conf /etc/apache2/sites-available/000-default.conf
+
+#Restart apache
+sudo service apache2 restart
+
+#Allow .htaccess overrides
+sudo cp /vagrant/apache2.conf /etc/apache2/apache2.conf
+sudo a2enmod rewrite
+sudo apache2ctl configtest
+
+#Own the html directory by www-data
+sudo chown -R vagrant:www-data /vagrant/html
+sudo chmod -R 755 /vagrant/html
+
+#Restart apache for the permissions change
+sudo service apache2 restart
+
+#Install RbEnv
 cd
 git clone git://github.com/sstephenson/rbenv.git .rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
