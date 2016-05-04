@@ -78,6 +78,10 @@ rbenv rehash
 gem install jekyll
 rbenv rehash
 
+#Install Bundlrer
+gem install bundle
+rbenv rehash
+
 #Add our awesome ubuntu banner
 sudo cp /vagrant/sshd_config /etc/ssh/sshd_config
 sudo cp /vagrant/issue.net /etc/issue.net
