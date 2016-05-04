@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 #Remove Non-interactive .bashrc lines
-sh /vagrant/BaseVagrant/interactiveBash.sh
+echo "Modifying .bashrc to allow edits"
+sed '5,10d;' /home/vagrant/.bashrc > /home/vagrant/.bashrcNew
+mv /home/vagrant/.bashrcNew /home/vagrant/.bashrc
 
 #Update The Distro
 sudo apt-get update
@@ -67,8 +69,9 @@ yo --version
 bower --version
 grunt --version
 
-#Add my personal preferences
-sh /vagrant/BaseVagrant/personalPrefs.sh
-source /home/vagrant/.bashrc
+#Add our awesome ubuntu banner
+sudo cp /vagrant/sshd_config /etc/ssh/sshd_config
+sudo cp /vagrant/issue.net /etc/issue.net
+sudo cp /vagrant/issue.net /etc/motd
 
 #Finished!
