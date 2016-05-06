@@ -18,19 +18,19 @@ sudo apt-get install -y git build-essential libssl-dev git-core curl zlib1g-dev 
 #Install apache2
 
 # Replace apache dir.conf, enable apache php
-sudo cp /vagrant/dir.conf /etc/apache2/mods-enabled/dir.conf
+sudo cp /vagrant/vagrantConfig/dir.conf /etc/apache2/mods-enabled/dir.conf
 
 #Restart apache
 sudo service apache2 restart
 
 #Set our document root so we can access it
-sudo cp /vagrant/000-default.conf /etc/apache2/sites-available/000-default.conf
+sudo cp /vagrant/vagrantConfig/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 #Restart apache
 sudo service apache2 restart
 
 #Allow .htaccess overrides
-sudo cp /vagrant/apache2.conf /etc/apache2/apache2.conf
+sudo cp /vagrant/vagrantConfig/apache2.conf /etc/apache2/apache2.conf
 sudo a2enmod rewrite
 sudo apache2ctl configtest
 
@@ -99,9 +99,9 @@ bower --version
 grunt --version
 
 #Add our awesome ubuntu banner
-sudo cp /vagrant/sshd_config /etc/ssh/sshd_config
-sudo cp /vagrant/issue.net /etc/issue.net
-sudo cp /vagrant/issue.net /etc/motd
+sudo cp /vagrant/vagrantConfig/sshd_config /etc/ssh/sshd_config
+sudo cp /vagrant/vagrantConfig/issue.net /etc/issue.net
+sudo cp /vagrant/vagrantConfig/issue.net /etc/motd
 
 #Finished!
 
