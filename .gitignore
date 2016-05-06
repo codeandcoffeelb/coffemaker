@@ -5,5 +5,5 @@
 */
 
 #Dont ignore the html folder/readme or vagrant config files
-!/html/README
+!/html/README.md
 !/vagrantConfig
